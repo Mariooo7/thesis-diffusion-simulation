@@ -1,0 +1,39 @@
+# 实验配置文件 - 组 D (随机网络 + 弱情感)
+
+group: D
+description: "随机网络 + 弱情感口碑"
+
+# 网络配置
+network:
+  type: "random"  # small_world | random
+  n_nodes: 200
+  avg_degree: 8
+
+# 口碑语义配置
+wom:
+  strength: "weak"  # strong | weak
+  emotion_arousal: 0.3  # 0-1, low for weak
+  valence: "positive"
+
+# Bass 模型参数
+bass:
+  innovation_coef: 0.01  # p
+  imitation_coef: 0.3    # q
+
+# 仿真配置
+simulation:
+  n_steps: 100
+  seed: 42
+  use_llm: false
+
+# LLM 配置 (可选)
+llm:
+  provider: "dashscope"
+  model: "qwen3.5-plus"
+  base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+
+# 输出配置
+output:
+  save_raw: true
+  save_processed: true
+  log_level: "INFO"
