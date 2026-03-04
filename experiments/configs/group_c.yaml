@@ -6,7 +6,7 @@ description: "随机网络 + 强情感口碑"
 # 网络配置
 network:
   type: "random"  # small_world | random
-  n_nodes: 200
+  n_nodes: 100  # 简化：从 200 减少到 100，符合 ABM 标准实践 (Gilbert, 2008; JASSS 2023)
   avg_degree: 8
 
 # 口碑语义配置
@@ -22,9 +22,11 @@ bass:
 
 # 仿真配置
 simulation:
-  n_steps: 100
+  n_steps: 60  # 简化：从 100 减少到 60，扩散曲线通常在 50-60 步达到稳定
+  n_repetitions: 15  # 简化：从 20 减少到 15，ABM 标准建议 (Gilbert, 2008)
   seed: 42
-  use_llm: false
+  use_llm: true  # true=使用 LLM, false=使用启发式
+  llm_sampling_ratio: 1.0  # 100% 决策使用 LLM（保持研究设计）
 
 # LLM 配置 (可选)
 llm:
